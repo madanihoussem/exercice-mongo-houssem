@@ -1,11 +1,11 @@
 extends layout.pug 
 block content 
     .container
-      h1= article.title
-      p= article.content
-      div#article-data(data-article=JSON.stringify(article))
+      h1= entity.title
+      p= entity.content
+      div#entity-data(data-entity=JSON.stringify(entity))
 
-      p Applaudissements :#{article.applauseCount}
+      p Applaudissements :#{entity.applauseCount}
 
       p=del.acknowledged
 

@@ -2,27 +2,27 @@ const {
   create,
   comments,
   applaud,
-  showArticle,
-  editArticle,
-  showArticles,
-  deleteArticle,
-} = require("../controllers/articleController");
-const Article = require("../models/articleModel");
+  showBlog,
+  editBlog,
+  showBlogs,
+  deleteBlog,
+} = require("../controllers/blogController");
+const Blog = require("../models/blogModel");
 
 const router = require("express").Router();
 
 router.get("/create", (req, res) => {
-  res.render("create", { titre: 'Article', myroute: "articles"});
+  res.render("create", { titre: "Blog", myroute: "blogs" });
 });
-router.get('/:id/show', showArticle)
-router.put('/:id/edit', editArticle)
-router.get('/:id/delete', deleteArticle)
-router.get('/all', showArticles)
+router.get('/:id/show', showBlog)
+router.put('/:id/edit', editBlog)
+router.get('/:id/delete', deleteBlog)
+router.get('/all', showBlogs)
 router.post("/create", create);
 router.get("/:id/comments", async (req, res) => {
   try {
     const id = req.params.id;
-  const article = await Article.findById({_id:id});
+  const blog = await Blog.findById({_id:id});
   res.render("comments", { article });
   } catch (error) {
     res.status(404).json({ error: error.message });

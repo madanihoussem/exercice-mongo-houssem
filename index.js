@@ -23,6 +23,7 @@ app.get("/", (req, res) => {
   res.json(`Bienvenue sur l'API REST de type medium`);
 });
 app.use("/api/articles", require("./routes/articleRoutes"));
+app.use("/api/blogs", require("./routes/blogRoutes"));
 app.listen(port, () =>
   console.log(`[SERVER] Le server écoute sur le port : ${port}`)
 );

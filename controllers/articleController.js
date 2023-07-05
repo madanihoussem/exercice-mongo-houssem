@@ -16,7 +16,7 @@ const create = async (req, res) => {
 const showArticles = async (req, res) => {
   try {
     const articles = await Article.find();
-    res.status(200).render("list", { articles: articles });
+    res.status(200).render("list", { entity: articles });
   } catch (error) {
     res.json({ message: "Pas d'article trouvé" });
   }
@@ -24,7 +24,7 @@ const showArticles = async (req, res) => {
 const showArticle = async (req, res) => {
   try {
     const article = await Article.findOne({'_id' : req.params.id});
-    res.status(200).render("show", { article: article });
+    res.status(200).render("show", { entity: article });
   } catch (error) {
     res.json({ message: "Article non trouvé" });
   }
@@ -44,7 +44,7 @@ const deleteArticle = async (req, res) => {
   try {
     const article = await Article.findOne(id);
     const del = await Article.deleteOne(id);
-    res.status(200).render("delete", { article: article, del: del });
+    res.status(200).render("delete", { entity: article, del: del });
   } catch (error) {
     res.json({ message: "Article non trouvé" });
   }
